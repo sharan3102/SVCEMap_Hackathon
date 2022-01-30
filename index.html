@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Hack0Holic-main/css/styles.css">
+    
+
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css"> -->
+
+    <title>Hackathon</title>
+</head>
+<body onload="checkLocation();" id="code">
+    <div class="fixed-header">
+        <div class="nav">
+            <a href="#code"> <img src="logo.png" alt="svce_logo" width="250" ></a>
+             <h2>Map for SVCE</h2>
+             <span id=clicks>
+             <a href="#about">
+                <button class="devs">Developers</button>
+              </a>
+              <a href="#mp">
+             <button class="static-map">Map</button>
+            </a>
+            <a href="#ytvid">
+             <button class="v-tour">Virtual Tour</button>
+            </a>
+             <a href="#op">
+                <button class="key-spots">Key Spots</button>
+            </a>
+          </span>   
+            </div>
+    </div>
+    <nav id="mob">
+      <input id="nav-toggle" type="checkbox">
+      <div class="logo"><b>SVCE MAP</b></div>
+      <ul class="links">
+        <li><a href="#code">Home</a></li>
+        <li><a href="#op">Key Spots</a></li>
+        <li><a href="#ytvid">Virtual Tour</a></li>
+        <li><a href="#mp">Map</a></li>
+        <li><a href="#about">Developers</a></li>
+      </ul>
+      <label for="nav-toggle" class="icon-burger" style="width: 60px;">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
+    </nav>
+
+    <div class="mainn">
+    <div class="hero">
+        <div class="form">
+            <form id="get-data" >
+                <label for="from">Current Location  </label>
+                <br>
+                <select name="from" id="from" class="choose">
+                    <option value="" selected>--Select--</option>
+                    <option onclick="checkLocation();"value="Marina Beach">Your Location</option>
+                    <option value="12.983477370884739, 79.97119263727002">Entrance</option>
+                    <option value="12.9857923900069, 79.9712710918842 ">Parking Area</option>
+                    <option value="SVCE College Bus Parking Area">Bus Bay</option>
+                    <option value="12.985676084175754, 79.97171231526711">BasketBall & Tennis Court</option>
+                    <option value="12.985500971911964, 79.97227826136864 ">Play Ground</option>
+                    <option value="12.986251078791847, 79.97345038671057">Cricket Ground</option>
+                    <option value="12.987118408457631, 79.97181955248448">Library</option>
+                    <option value="12.987006023649586, 79.97196170956357">Admin Block</option>
+                    <option value="12.986938070017937, 79.97211459547695">Function Hall</option>
+                    <option value="12.98700079645018, 79.9720502224603">Placement Cell</option>
+                    <option value="12.986443445416796, 79.97218366235796">Canteen</option>
+                    <option value="12.987897259979531, 79.97466269404354">Food Court</option>
+                    <option value="12.986619863813686, 79.97238214582569">Block 1</option>
+                    <option value="12.986845940544928, 79.97261147469709">Block 2</option>
+                    <option value="12.988124642330936, 79.97269663483092">Block 3</option>
+                    <option value="12.987418972262578, 79.97327867419035">Block 4</option>                    
+                    <option value="SVCE 5th Block">Block 5</option>
+                    <option value="12.987371927511186, 79.97191879421669">SVCE Temple </option>
+                    <option value="12.987306587576604, 79.97106316953825">OAT</option>
+                    <option value="12.987941691021645, 79.97366491228972">SVCE Pond</option>
+                    <option value="12.98740067707697, 79.9714574542647">Dept of BioTech</option>
+                    <option value="12.987267383609996, 79.97256788880034">Dept of EEE</option>
+                    <option value="12.988689171312462, 79.9739652943464">Dept of ECE</option>
+                    <option value="12.987196816450092, 79.97306946188681">Dept of IT</option>
+                    <option value="12.987416358660317, 79.97295412689878">Dept of CS</option>
+                    <option value="12.987541811268425, 79.97305068642372">Dept of Mech</option>
+                    <option value="12.98857156568356, 79.97143599659445">Dept of AutoMobile</option>
+                    <option value="12.987863283287785, 79.97214141756778">Dept of Chemical</option>
+                    <option value="12.987813625027616, 79.97144672543013">Dept of Marine</option>
+                    <option value="12.987978281303459, 79.97099879652387">WorkShop 1</option>
+                    <option value="12.987957372577293, 79.97179004818574">WorkShop 2</option>
+                    <option value="12.98858986077383, 79.97096392780635">Substation</option>
+                    <option value="12.988357246026705, 79.97215212104665">COE</option>
+                    <option value="12.989436654977544, 79.97150839088106 ">Multi Purpose Hall</option>
+                    <option value="12.989959369490721, 79.9712938141592">Swimming Pool</option>
+                    <option value="12.99010572936877, 79.97045696494914">Boys Hostel</option>
+                    <option value="12.987392830647998, 79.96914000032338">Girls Hostel</option>
+                    <option value="12.988717920726266, 79.97022897718522">Medical Centre</option>
+
+
+                </select>
+                <br>
+                <label for="to">Destination</label>
+                <br>
+                <select name="to" id="to" class="choose">
+                    <option value="" selected>--Select--</option>   
+                    <option value="12.983477370884739, 79.97119263727002">Entrance</option>
+                    <option value="12.9857923900069, 79.9712710918842 ">Parking Area</option>
+                    <option value="SVCE College Bus Parking Area">Bus Bay</option>
+                    <option value="12.985676084175754, 79.97171231526711">BasketBall & Tennis Court</option>
+                    <option value="12.985500971911964, 79.97227826136864 ">Play Ground</option>
+                    <option value="12.986251078791847, 79.97345038671057">Cricket Ground</option>
+                    <option value="12.987118408457631, 79.97181955248448">Library</option>
+                    <option value="12.987006023649586, 79.97196170956357">Admin Block</option>
+                    <option value="12.986938070017937, 79.97211459547695">Function Hall</option>
+                    <option value="12.98700079645018, 79.9720502224603">Placement Cell</option>
+                    <option value="12.986443445416796, 79.97218366235796">Canteen</option>
+                    <option value="12.987897259979531, 79.97466269404354">Food Court</option>
+                    <option value="12.986619863813686, 79.97238214582569">Block 1</option>
+                    <option value="12.986845940544928, 79.97261147469709">Block 2</option>
+                    <option value="12.988124642330936, 79.97269663483092">Block 3</option>
+                    <option value="12.987418972262578, 79.97327867419035">Block 4</option>                    
+                    <option value="SVCE 5th Block">Block 5</option>
+                    <option value="12.987371927511186, 79.97191879421669">SVCE Temple </option>
+                    <option value="12.987306587576604, 79.97106316953825">OAT</option>
+                    <option value="12.987941691021645, 79.97366491228972">SVCE Pond</option>
+                    <option value="12.98740067707697, 79.9714574542647">Dept of BioTech</option>
+                    <option value="12.987267383609996, 79.97256788880034">Dept of EEE</option>
+                    <option value="12.988689171312462, 79.9739652943464">Dept of ECE</option>
+                    <option value="12.987196816450092, 79.97306946188681">Dept of IT</option>
+                    <option value="12.987416358660317, 79.97295412689878">Dept of CS</option>
+                    <option value="12.987541811268425, 79.97305068642372">Dept of Mech</option>
+                    <option value="12.98857156568356, 79.97143599659445">Dept of AutoMobile</option>
+                    <option value="12.987863283287785, 79.97214141756778">Dept of Chemical</option>
+                    <option value="12.987813625027616, 79.97144672543013">Dept of Marine</option>
+                    <option value="12.987978281303459, 79.97099879652387">WorkShop 1</option>
+                    <option value="12.987957372577293, 79.97179004818574">WorkShop 2</option>
+                    <option value="12.98858986077383, 79.97096392780635">Substation</option>
+                    <option value="12.988357246026705, 79.97215212104665">COE</option>
+                    <option value="12.989436654977544, 79.97150839088106 ">Multi Purpose Hall</option>
+                    <option value="12.989959369490721, 79.9712938141592">Swimming Pool</option>
+                    <option value="12.99010572936877, 79.97045696494914">Boys Hostel</option>
+                    <option value="12.987392830647998, 79.96914000032338">Girls Hostel</option>
+                    <option value="12.988717920726266, 79.97022897718522">Medical Centre</option>
+
+                </select>
+            </form>
+            <button class="send" onclick="CalculateRoute();">Get Route</button>
+            <button class="navigation" onclick="GetDir();"> Get Directions</button>
+        </div>
+            <div id="map" class="map">
+
+            </div>
+         
+    </div>
+    <div id="op">    
+        
+    </div>    
+</div>
+    <!---all places-->
+<div class="categories" id="categories">
+    <div id="main-content">
+        <h2 id="menu-categories-title" class="text-center" style="color:white;">KEY SPOTS</h2>
+    
+        <section class="row">
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230px" src="Hack0Holic-main/images/MPH.png" alt="Multi Purpose Hall" onclick="mph();">
+                <span>Multi Purpose Hall</span>
+                </a>
+            </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230" src="Hack0Holic-main/images/OAT.jpg" alt="Multi Purpose Hall" onclick="oat();">
+                <span>OAT</span>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img  id="medic"width="280" height="230" src="Hack0Holic-main/images/MEDICAL CENTRE.jpeg" alt="Multi Purpose Hall" onclick="medic();">
+                <span>Medical Centre</span>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230" src="Hack0Holic-main/images/CANTEEN.jpeg" alt="Multi Purpose Hall" onclick="canteen();">
+                <span>Canteen</span>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230" src="Hack0Holic-main/images/TEMPLE.png" alt="Multi Purpose Hall" onclick="temple();">
+                <span>Temple</span>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230" src="Hack0Holic-main/images/BUS BAY.png" alt="Multi Purpose Hall" onclick="busbay();">
+                <span>Bus Bay</span>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230" src="Hack0Holic-main/images/ADMIN BLOCK.png" alt="Multi Purpose Hall" onclick="adminBlock();">
+                <span>Admin Block</span>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+            <a href="single-category.html">
+              <div class="category-tile">
+                <a href="#code"> 
+                <img width="280" height="230" src="Hack0Holic-main/images/LIBRARY.png" alt="Multi Purpose Hall" onclick="lib();">
+                <span>Library</span>
+                </a>
+              </div>
+            </a>
+          </div>
+         </section>
+    
+      </div>    
+</div>
+
+    <!-- <br id="vtzoom">  -->
+<div id="ytvid">
+  <br><br>
+  <h2 id="menu-categories-title" class="text-center" style="color:white;">VIRTUAL TOUR</h2>
+    <div class="shadoww">
+    <center>
+    <iframe id="vid" width="65%" height="500" style="border:5px solid white; box-shadow: 0 4px 8px 4px #cccccc;" src="https://www.youtube.com/embed/oCFQdzcog88" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </center>
+    </div>
+    <br id="mp"><br ><br><br>
+</div>
+
+
+<div id="staticmap">
+  <br ><br><br>
+
+    <h2 id="menu-categories-title" class="text-center" style="color:white;">COLLEGE MAP</h2>
+
+    <center>
+    <div id="boxx">
+    <image id="staticMap" src="Hack0Holic-main/css/image_2022-01-30_020232.png"  width="60%" height="500px"></image>
+    </div>
+    </center> 
+
+</div>  
+
+<div id="about">
+  <br><br><br><br><br><br>
+
+    <h2 id="menu-categories-title" class="text-center" style="color:white;">DEVELOPERS</h2>
+
+    <center>
+    <video id="trvid"src="Hack0Holic-main/css/developers.mp4" autoplay loop muted width="100%" height="540px"></video>
+    </center> 
+
+</div>
+
+    
+    
+    <!-- AIzaSyAaJxvy671oUa0T2d--ImBbUoZIaxwa6EE
+key=AIzaSyCqd1XS0Jt-VUrhm_x1nY9bmQEk5xwf8Sc -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqd1XS0Jt-VUrhm_x1nY9bmQEk5xwf8Sc&libraries=places"></script>
+    <script src="map.js"></script>
+</body>
+</html>
+
+
+
+
